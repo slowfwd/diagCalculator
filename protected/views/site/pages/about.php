@@ -8,5 +8,5 @@ $this->breadcrumbs=array(
 ?>
 <h1>About</h1>
 
-<p>This is a "static" page. You may change the content of this page
-by updating the file <code><?php echo __FILE__; ?></code>.</p>
+<p style = "font-size:14px;font-style:Verdanan;" >This web application was created by the School of Engineering as a part of the course project for CIS
+	573. </p>

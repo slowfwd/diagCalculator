@@ -6,6 +6,14 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
+    
+    'aliases' => array(
+        // yiistrap configuration
+        'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change if necessary
+        // yiiwheels configuration
+        'yiiwheels' => realpath(__DIR__ . '/../extensions/yiiwheels'), // change if necessary
+    ),	
+	
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Diagnostic Calculator',
 
@@ -16,6 +24,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'bootstrap.helpers.TbHtml',
 	),
 
 	'modules'=>array(
@@ -32,6 +41,16 @@ return array(
 
 	// application components
 	'components'=>array(
+        
+        // yiistrap configuration
+        'bootstrap' => array(
+            'class' => 'bootstrap.components.TbApi',
+        ),
+        // yiiwheels configuration
+        'yiiwheels' => array(
+            'class' => 'yiiwheels.YiiWheels',   
+        ),
+		
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
@@ -61,7 +80,7 @@ return array(
 			'password' => 'password',
 			'charset' => 'utf8',
 		),
-		
+		  
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

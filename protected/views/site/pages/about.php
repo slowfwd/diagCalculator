@@ -6,7 +6,24 @@ $this->breadcrumbs=array(
 	'About',
 );
 ?>
-<h1>About</h1>
+<div>
+  <style scoped>
+    ul {font-weight: normal }
+    li {font-weight: bold; margin-bottom: 10px }
+  </style>
 
-<p style = "font-size:14px;font-style:Verdanan;" >This web application was created by the School of Engineering as a part of the course project for CIS
-	573. </p>
+<img src="../../images/chop.gif" height="100px" width = "200px " style="float:right" >
+<h1>About</h1>
+<p style = "font-size:18px;font-style:Verdana;" >
+	This web application was created by the School of Engineering as a part of the course project for CIS573. </br>
+	</br>
+	Group 13.
+	<ul>
+		<li>Nivedita</li>
+		<li>Bhumika</li>
+		<li>Vaibhav</li>
+		<li>Prithvi</li>
+
+	</ul>
+</p>
+</div>

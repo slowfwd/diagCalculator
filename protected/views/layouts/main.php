@@ -27,7 +27,7 @@
 <!--	<img src="images/penn.jpg" style="width:275px; height:100px"/>	-->	
 	<?php 
 
-	$imghtml=CHtml::image(Yii::app()->request->baseUrl."/images/chop.gif","", array ('width'=>'225px' ,'height'=>'100px')); 
+	$imghtml=CHtml::image(Yii::app()->request->baseUrl."/images/penn.jpg","", array ('width'=>'225px' ,'height'=>'100px')); 
 	echo CHtml::link($imghtml, Yii::app()->request->baseUrl);
 	?>
 	</div><!-- header -->
@@ -56,8 +56,7 @@
 	<div class="clear"></div>
 
 	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by Vaibhav N Bhat.<br/>
-		All Rights Reserved.<br/>
+		By Vaibhav N Bhat.<br/>
 		<?php echo Yii::powered(); ?>
 	</div><!-- footer -->
 

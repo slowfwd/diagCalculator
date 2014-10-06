@@ -76,6 +76,16 @@ class DiagnosticTest extends CActiveRecord
 	}
 
 	/**
+	 *	@return array of diseases
+	 */
+	public function getAllDiagTest(){
+
+		$model = diag_test::model()->findAll();
+		$list = CHtml::listdata($model,'id','disease_name');
+		return $list;
+	}
+
+	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
 	 * Typical usecase:

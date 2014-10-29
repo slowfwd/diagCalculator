@@ -2,9 +2,11 @@
 /* @var $this DiseaseController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Diseases',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Diseases' => '#',
+),
+));
 
 $this->menu=array(
 	array('label'=>'Create Disease', 'url'=>array('create')),

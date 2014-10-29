@@ -4,9 +4,12 @@
 /* @var $form CActiveForm */
 
 $this->pageTitle=Yii::app()->name . ' - Contact Us';
-$this->breadcrumbs=array(
-	'Contact',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Contact' => '#',
+),
+));
+
 ?>
 
 <h1>Contact Us</h1>
@@ -20,7 +23,7 @@ $this->breadcrumbs=array(
 <?php else: ?>
 
 <p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+If you face any issues please don't hesitate to contact us using the form.
 </p>
 
 <div class="form">
@@ -75,7 +78,7 @@ If you have business inquiries or other questions, please fill out the following
 	<?php endif; ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo TbHtml::submitButton('Submit'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

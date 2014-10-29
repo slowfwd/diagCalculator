@@ -2,10 +2,12 @@
 /* @var $this DiseaseController */
 /* @var $model Disease */
 
-$this->breadcrumbs=array(
-	'Diseases'=>array('index'),
-	'Create',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Diseases' =>array('Disease/index'),
+'Create' => '#',
+),
+));
 
 $this->menu=array(
 	array('label'=>'List Disease', 'url'=>array('index')),

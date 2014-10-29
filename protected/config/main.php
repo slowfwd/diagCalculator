@@ -1,17 +1,17 @@
 <?php
 
 // uncomment the following to define a path alias
-// Yii::setPathOfAlias('local','path/to/local-folder');
-
+Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
+Yii::setPathOfAlias('yiiwheels', dirname(__FILE__).'/../extensions/yiiwheels');
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
     
     'aliases' => array(
         // yiistrap configuration
-        'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change if necessary
+//        'bootstrap' => ('../extensions/bootstrap'), // change if necessary
         // yiiwheels configuration
-        'yiiwheels' => realpath(__DIR__ . '/../extensions/yiiwheels'), // change if necessary
+//        'yiiwheels' => ('../extensions/yiiwheels'), // change if necessary
     ),	
 	
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
@@ -25,6 +25,8 @@ return array(
 		'application.models.*',
 		'application.components.*',
         'bootstrap.helpers.TbHtml',
+        'bootstrap.helpers.TbArray',
+        'bootstrap.helpers.TbNav',        
 	),
 
 	'modules'=>array(
@@ -65,10 +67,6 @@ return array(
 				//REST API
 				array('/api/list','pattern'=>'api/<model:\w+>', 'verb'=>'GET' ),
 				array('/api/view','pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'GET' ),
-				array('/api/update', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=>'PUT' ),
-				array('/api/delete', 'pattern'=>'api/<model:\w+>/<id:\d+>', 'verb'=> 'DELETE'),
-				array('/api/create', 'pattern'=>'api/<model:\w+>', 'verb'=>'POST' ),
-
 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
@@ -84,10 +82,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=diagdb',
+			'connectionString' => 'mysql:host=mysql.5freehosting.com;dbname=u116970497_diag',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'password',
+			'username' => 'u116970497_root',
+			'password' => 'password789',
 			'charset' => 'utf8',
 		),
 		  

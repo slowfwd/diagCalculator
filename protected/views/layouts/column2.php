@@ -8,7 +8,7 @@
 <div class="span-5 last">
 	<div id="sidebar">
 	<?php
-		$this->beginWidget('zii.widgets.CPortlet', array(
+		$this->beginWidget('yiiwheels.widgets.box.WhBox', array(
 			'title'=>'Operations',
 		));
 		$this->widget('zii.widgets.CMenu', array(

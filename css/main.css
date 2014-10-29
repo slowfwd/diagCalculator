@@ -211,11 +211,10 @@ div.search-form
 
 .operations li a
 {
-	font: bold 12px Arial;
+	font: 12px Arial;
 	color: #0066A4;
-	display: block;
 	padding: 2px 0 2px 8px;
-	line-height: 15px;
+	line-height: 10px;
 	text-decoration: none;
 }
 
@@ -226,5 +225,6 @@ div.search-form
 
 .operations li a:hover
 {
-	background: #80CFFF;
+	background: #C00000;
+	color: #FFFFFF;
 }

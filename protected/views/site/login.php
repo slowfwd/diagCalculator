@@ -4,9 +4,12 @@
 /* @var $form CActiveForm  */
 
 $this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
-	'Login',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Login' => '#',
+),
+));
+
 ?>
 
 <h1>Login</h1>
@@ -46,7 +49,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo TbHtml::submitButton('Login'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

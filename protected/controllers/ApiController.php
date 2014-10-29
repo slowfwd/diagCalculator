@@ -39,8 +39,10 @@ class ApiController extends Controller
     // {{{ actionList
     public function actionList()
     {
-        $arr2 = diagnostictest::model()->findAll();
-        $jsonString = CJSON::encode($arr2);
+        $arr1 = diagnostictest::model()->findAll();
+        $arr2 = disease::model()->findAll();
+        $all = array($arr1, $arr2 );        
+        $jsonString = CJSON::encode($all);
         $this->_sendResponse(200,$jsonString);
     } // }}} 
     // {{{ actionView
@@ -51,26 +53,26 @@ class ApiController extends Controller
      */
     public function actionView()
     {
-        $this->_checkAuth();
+
         // Check if id was submitted via GET
         if(!isset($_GET['id']))
             $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
 
-        switch($_GET['model'])
-        {
-            // Find respective model    
-            case 'posts': // {{{ 
-                $model = Post::model()->findByPk($_GET['id']);
-                break; // }}} 
-            default: // {{{ 
-                $this->_sendResponse(501, sprintf('Mode <b>view</b> is not implemented for model <b>%s</b>',$_GET['model']) );
-                exit; // }}} 
+        $apiVar = ($_GET['id']);
+
+        if($apiVar ==1)
+            $arr2 = diagnostictest::model()->findAll();
+
+        else if ($apiVar ==2)
+            $arr2 = disease::model()->findAll();
+
+        else {
+            $this -> _sendResponse(404,sprintf('Please check the request URL'));
         }
-        if(is_null($model)) {
-            $this->_sendResponse(404, 'No Item found with id '.$_GET['id']);
-        } else {
-            $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes));
-        }
+
+        $jsonString = CJSON::encode($arr2);
+        $this->_sendResponse(200,$jsonString);
+
     } // }}} 
     // {{{ actionCreate
     /**

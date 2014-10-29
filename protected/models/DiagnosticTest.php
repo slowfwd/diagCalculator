@@ -70,7 +70,7 @@ class DiagnosticTest extends CActiveRecord
 	 */
 	public function getAllDiseases(){
 
-		$model = disease::model()->findAll();
+		$model = Disease::model()->findAll();
 		$list = CHtml::listdata($model,'id','disease_name');
 		return $list;
 	}

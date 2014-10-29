@@ -82,10 +82,10 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=mysql.5freehosting.com;dbname=u116970497_diag',
+			'connectionString' => 'mysql:host=localhost;dbname=diagdb',
 			'emulatePrepare' => true,
-			'username' => 'u116970497_root',
-			'password' => 'password789',
+			'username' => 'root',
+			'password' => 'password',
 			'charset' => 'utf8',
 		),
 		  

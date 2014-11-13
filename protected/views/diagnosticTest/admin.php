@@ -2,10 +2,12 @@
 /* @var $this DiagnosticTestController */
 /* @var $model DiagnosticTest */
 
-$this->breadcrumbs=array(
-	'Diagnostic Tests'=>array('index'),
-	'Manage',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Diagnostic Tests' =>array('diagnosticTest/index'),
+'Manage' => '#',
+),
+));
 
 $this->menu=array(
 	array('label'=>'List DiagnosticTest', 'url'=>array('index')),

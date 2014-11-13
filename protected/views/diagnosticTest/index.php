@@ -2,9 +2,11 @@
 /* @var $this DiagnosticTestController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Diagnostic Tests',
-);
+$this->widget('bootstrap.widgets.TbBreadcrumb', array(
+'links' => array(
+'Diagnostic Tests' => '#',
+),
+));
 
 $this->menu=array(
 	array('label'=>'Create DiagnosticTest', 'url'=>array('create')),

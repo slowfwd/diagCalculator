@@ -39,6 +39,10 @@ class DiseaseController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('chop573'),
+			),			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),

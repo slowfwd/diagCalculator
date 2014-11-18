@@ -39,11 +39,11 @@ class ApiController extends Controller
     // {{{ actionList
     public function actionList()
     {
-        $arr1 = diagnostictest::model()->findAll();
-        $arr2 = disease::model()->findAll();
-        $all = array($arr1, $arr2 );        
-        $jsonString = CJSON::encode($all);
-        $this->_sendResponse(200,$jsonString);
+     
+        $testsModel = DiagnosticTest::model() -> getAllDiagTest();
+        $testsJson = json_encode($testsModel);
+        $this->_sendResponse(200, $testsJson);
+
     } // }}} 
     // {{{ actionView
     /* Shows a single item
@@ -54,25 +54,9 @@ class ApiController extends Controller
     public function actionView()
     {
 
-        // Check if id was submitted via GET
-        if(!isset($_GET['id']))
-            $this->_sendResponse(500, 'Error: Parameter <b>id</b> is missing' );
-
-        $apiVar = ($_GET['id']);
-
-        if($apiVar ==1)
-            $arr2 = diagnostictest::model()->findAll();
-
-        else if ($apiVar ==2)
-            $arr2 = disease::model()->findAll();
-
-        else {
-            $this -> _sendResponse(404,sprintf('Please check the request URL'));
-        }
-
-        $jsonString = CJSON::encode($arr2);
-        $this->_sendResponse(200,$jsonString);
-
+        $diseaseModel = DiagnosticTest::model() -> getAllDiseases();
+        $diseasesJson = json_encode($diseaseModel);
+        $this->_sendResponse(200, $diseasesJson);
     } // }}} 
     // {{{ actionCreate
     /**
@@ -83,50 +67,7 @@ class ApiController extends Controller
      */
     public function actionCreate()
     {
-        $this->_checkAuth();
 
-        switch($_GET['model'])
-        {
-            // Get an instance of the respective model
-            case 'posts': // {{{ 
-                $model = new Post;                    
-                break; // }}} 
-            default: // {{{ 
-                $this->_sendResponse(501, sprintf('Mode <b>create</b> is not implemented for model <b>%s</b>',$_GET['model']) );
-                exit; // }}} 
-        }
-        // Try to assign POST values to attributes
-        foreach($_POST as $var=>$value) {
-            // Does the model have this attribute?
-            if($model->hasAttribute($var)) {
-                $model->$var = $value;
-            } else {
-                // No, raise an error
-                $this->_sendResponse(500, sprintf('Parameter <b>%s</b> is not allowed for model <b>%s</b>', $var, $_GET['model']) );
-            }
-        }
-        // Try to save the model
-        if($model->save()) {
-            // Saving was OK
-            $this->_sendResponse(200, $this->_getObjectEncoded($_GET['model'], $model->attributes) );
-        } else {
-            // Errors occurred
-            $msg = "<h1>Error</h1>";
-            $msg .= sprintf("Couldn't create model <b>%s</b>", $_GET['model']);
-            $msg .= "<ul>";
-            foreach($model->errors as $attribute=>$attr_errors) {
-                $msg .= "<li>Attribute: $attribute</li>";
-                $msg .= "<ul>";
-                foreach($attr_errors as $attr_error) {
-                    $msg .= "<li>$attr_error</li>";
-                }        
-                $msg .= "</ul>";
-            }
-            $msg .= "</ul>";
-            $this->_sendResponse(500, $msg );
-        }
-
-        var_dump($_REQUEST);
     } // }}}     
     // {{{ actionUpdate
     /**
@@ -137,52 +78,7 @@ class ApiController extends Controller
      */
     public function actionUpdate()
     {
-        $this->_checkAuth();
 
-        // Get PUT parameters
-        parse_str(file_get_contents('php://input'), $put_vars);
-
-        switch($_GET['model'])
-        {
-            // Find respective model
-            case 'posts': // {{{ 
-                $model = Post::model()->findByPk($_GET['id']);                    
-                break; // }}} 
-            default: // {{{ 
-                $this->_sendResponse(501, sprintf('Error: Mode <b>update</b> is not implemented for model <b>%s</b>',$_GET['model']) );
-                exit; // }}} 
-        }
-        if(is_null($model))
-            $this->_sendResponse(400, sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
-        
-        // Try to assign PUT parameters to attributes
-        foreach($put_vars as $var=>$value) {
-            // Does model have this attribute?
-            if($model->hasAttribute($var)) {
-                $model->$var = $value;
-            } else {
-                // No, raise error
-                $this->_sendResponse(500, sprintf('Parameter <b>%s</b> is not allowed for model <b>%s</b>', $var, $_GET['model']) );
-            }
-        }
-        // Try to save the model
-        if($model->save()) {
-            $this->_sendResponse(200, sprintf('The model <b>%s</b> with id <b>%s</b> has been updated.', $_GET['model'], $_GET['id']) );
-        } else {
-            $msg = "<h1>Error</h1>";
-            $msg .= sprintf("Couldn't update model <b>%s</b>", $_GET['model']);
-            $msg .= "<ul>";
-            foreach($model->errors as $attribute=>$attr_errors) {
-                $msg .= "<li>Attribute: $attribute</li>";
-                $msg .= "<ul>";
-                foreach($attr_errors as $attr_error) {
-                    $msg .= "<li>$attr_error</li>";
-                }        
-                $msg .= "</ul>";
-            }
-            $msg .= "</ul>";
-            $this->_sendResponse(500, $msg );
-        }
     } // }}} 
     // {{{ actionDelete
     /**
@@ -193,30 +89,7 @@ class ApiController extends Controller
      */
     public function actionDelete()
     {
-        $this->_checkAuth();
 
-        switch($_GET['model'])
-        {
-            // Load the respective model
-            case 'posts': // {{{ 
-                $model = Post::model()->findByPk($_GET['id']);                    
-                break; // }}} 
-            default: // {{{ 
-                $this->_sendResponse(501, sprintf('Error: Mode <b>delete</b> is not implemented for model <b>%s</b>',$_GET['model']) );
-                exit; // }}} 
-        }
-        // Was a model found?
-        if(is_null($model)) {
-            // No, raise an error
-            $this->_sendResponse(400, sprintf("Error: Didn't find any model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
-        }
-
-        // Delete the model
-        $num = $model->delete();
-        if($num>0)
-            $this->_sendResponse(200, sprintf("Model <b>%s</b> with ID <b>%s</b> has been deleted.",$_GET['model'], $_GET['id']) );
-        else
-            $this->_sendResponse(500, sprintf("Error: Couldn't delete model <b>%s</b> with ID <b>%s</b>.",$_GET['model'], $_GET['id']) );
     } // }}} 
     // }}} End Actions
     // {{{ Other Methods
@@ -360,6 +233,7 @@ class ApiController extends Controller
      */
     private function _checkAuth()
     {
+        echo "in Auth!!";
         // Check if we have the USERNAME and PASSWORD HTTP headers set?
         if(!(isset($_SERVER['HTTP_X_'.self::APPLICATION_ID.'_USERNAME']) and isset($_SERVER['HTTP_X_'.self::APPLICATION_ID.'_PASSWORD']))) {
             // Error: Unauthorized

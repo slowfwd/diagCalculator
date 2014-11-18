@@ -80,8 +80,8 @@ class DiagnosticTest extends CActiveRecord
 	 */
 	public function getAllDiagTest(){
 
-		$model = diag_test::model()->findAll();
-		$list = CHtml::listdata($model,'id','disease_name');
+		$model = DiagnosticTest::model()->findAll();
+		$list = CHtml::listdata($model,'disease_id','name','cost');
 		return $list;
 	}
 

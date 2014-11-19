@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'cost'); ?>
-		<?php echo $form->textField($model,'cost'); ?>
+		<?php echo $form->dropDownList($model,'cost',array('1','2','3','4','5')); ?>
 		<?php echo $form->error($model,'cost'); ?>
 	</div>
 

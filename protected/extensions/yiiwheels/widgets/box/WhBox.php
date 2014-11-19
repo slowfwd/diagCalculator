@@ -72,8 +72,11 @@ class WhBox extends CWidget
     {
         if (isset($this->htmlOptions['class'])) {
             $this->htmlOptions['class'] = 'bootstrap-widget ' . $this->htmlOptions['class'];
+            $this->htmlOptions['style'] = 'width:240px';
+            
         } else {
             $this->htmlOptions['class'] = 'bootstrap-widget';
+            $this->htmlOptions['style'] = 'width:240px';
         }
 
         if (isset($this->htmlContentOptions['class'])) {

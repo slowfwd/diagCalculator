@@ -84,7 +84,8 @@ class DiagnosticTest extends CActiveRecord
 		for ($i=0; $i < count($model); $i++) { 
 			$res[$i]['id'] = ($model[$i]->id);
 			$res[$i]['name'] = ($model[$i]->disease_name);
-			$res[$i]['pretest'] = '0';
+			$res[$i]['pretest_low'] = ($model[$i]->hints_lower);
+			$res[$i]['pretest_high'] = ($model[$i]->hints_upper);			
 		}
 
 		return $res;

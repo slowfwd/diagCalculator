@@ -92,8 +92,8 @@ class DiagnosticTest extends CActiveRecord
 			$res[$i]['hint'] = 'Default Hint';
 			for ($k=0; $k < count($tests); $k++) { 
 				$res[$i][$k]['name'] = ($tests[$k]->name);
-				$res[$i][$k]['specificity'] = 20;
-				$res[$i][$k]['sensitivity'] = 40;
+				$res[$i][$k]['sensitivity'] = $tests[$k] ->sensitivity;				
+				$res[$i][$k]['specificity'] = $tests[$k] ->specificity;
 				$res[$i][$k]['cost'] = ($tests[$k]->cost);				
 			}
 		}

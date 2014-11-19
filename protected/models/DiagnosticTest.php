@@ -71,8 +71,15 @@ class DiagnosticTest extends CActiveRecord
 	public function getAllDiseases(){
 
 		$model = Disease::model()->findAll();
-		$list = CHtml::listdata($model,'id','disease_name');
-		return $list;
+		$res = array(array());
+
+		for ($i=0; $i < count($model); $i++) { 
+			$res[$i]['id'] = ($model[$i]->id);
+			$res[$i]['name'] = ($model[$i]->disease_name);
+			$res[$i]['pretest'] = '0';
+		}
+
+		return $res;
 	}
 
 	/**
@@ -81,8 +88,15 @@ class DiagnosticTest extends CActiveRecord
 	public function getAllDiagTest(){
 
 		$model = DiagnosticTest::model()->findAll();
-		$list = CHtml::listdata($model,'disease_id','name','cost');
-		return $list;
+		$res = array(array());
+
+		for ($i=0; $i < count($model); $i++) { 
+			$res[$i]['id'] = ($model[$i]->id);
+			$res[$i]['disease_id'] = ($model[$i]->disease_id);
+			$res[$i]['cost'] = ($model[$i]->cost);
+			$res[$i]['name'] = ($model[$i]->name);
+		}
+		return $res;
 	}
 
 	/**

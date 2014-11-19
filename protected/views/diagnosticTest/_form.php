@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'disease_id'); ?>
-		<?php echo $form->dropDownList($model,'disease_id',$model->getAllDiseases()); ?>
+		<?php echo $form->dropDownList($model,'disease_id',$model->getDiseaseList()); ?>
 		<?php echo $form->error($model,'disease_id'); ?>
 	</div>
 

@@ -65,6 +65,14 @@ class DiagnosticTest extends CActiveRecord
 		);
 	}
 
+	public function getDiseaseList(){
+	 
+		$model = Disease::model()->findAll();
+ 		$list = CHtml::listdata($model,'id','disease_name');
+ 		return $list;
+
+	}
+
 	/**
 	 *	@return array of diseases
 	 */

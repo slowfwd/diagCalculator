@@ -13,5 +13,10 @@
 	<?php echo CHtml::encode($data->disease_name); ?>
 	<br />
 
-
+	<b><?php echo CHtml::encode($data->getAttributeLabel('hints_lower')); ?>:</b>
+	<?php echo CHtml::encode($data->hints_lower); ?>
+	<br />
+	<b><?php echo CHtml::encode($data->getAttributeLabel('hints_upper')); ?>:</b>
+	<?php echo CHtml::encode($data->hints_upper); ?>
+	<br />
 </div>

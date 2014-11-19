@@ -23,5 +23,7 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'disease_name',
+		'hints_lower',
+		'hints_upper'
 	),
 )); ?>

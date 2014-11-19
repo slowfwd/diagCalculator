@@ -21,8 +21,18 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'disease_name'); ?>
-		<?php echo $form->textField($model,'disease_name',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->textField($model,'disease_name'); ?>
 		<?php echo $form->error($model,'disease_name'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'Pretest Probability Lower Bound'); ?>
+		<?php echo $form->textField($model,'hints_lower'); ?>
+		<?php echo $form->error($model,'hints_lower'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'Pretest Probability Higher Bound'); ?>
+		<?php echo $form->textField($model,'hints_upper'); ?>
+		<?php echo $form->error($model,'hints_upper'); ?>
 	</div>
 
 	<div class="row buttons">

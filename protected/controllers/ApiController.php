@@ -37,7 +37,7 @@ class ApiController extends Controller
         echo CJSON::encode(array(1, 2, 3));
     } // }}} 
     // {{{ actionList
-    public function actionList()
+    public function actionListTest()
     {
      
         $testsModel = DiagnosticTest::model() -> getAllDiagTest();
@@ -51,7 +51,7 @@ class ApiController extends Controller
      * @access public
      * @return void
      */
-    public function actionView()
+    public function actionListDisease()
     {
 
         $diseaseModel = DiagnosticTest::model() -> getAllDiseases();
@@ -59,41 +59,6 @@ class ApiController extends Controller
         $this->_sendResponse(200, $diseasesJson);
     } // }}} 
     // {{{ actionCreate
-    /**
-     * Creates a new item
-     * 
-     * @access public
-     * @return void
-     */
-    public function actionCreate()
-    {
-
-    } // }}}     
-    // {{{ actionUpdate
-    /**
-     * Update a single iten
-     * 
-     * @access public
-     * @return void
-     */
-    public function actionUpdate()
-    {
-
-    } // }}} 
-    // {{{ actionDelete
-    /**
-     * Deletes a single item
-     * 
-     * @access public
-     * @return void
-     */
-    public function actionDelete()
-    {
-
-    } // }}} 
-    // }}} End Actions
-    // {{{ Other Methods
-    // {{{ _sendResponse
     /**
      * Sends the API response 
      * 
@@ -224,33 +189,7 @@ class ApiController extends Controller
 
         return (isset($codes[$status])) ? $codes[$status] : '';
     } // }}} 
-    // {{{ _checkAuth
-    /**
-     * Checks if a request is authorized
-     * 
-     * @access private
-     * @return void
-     */
-    private function _checkAuth()
-    {
-        echo "in Auth!!";
-        // Check if we have the USERNAME and PASSWORD HTTP headers set?
-        if(!(isset($_SERVER['HTTP_X_'.self::APPLICATION_ID.'_USERNAME']) and isset($_SERVER['HTTP_X_'.self::APPLICATION_ID.'_PASSWORD']))) {
-            // Error: Unauthorized
-            $this->_sendResponse(401);
-        }
-        $username = $_SERVER['HTTP_X_'.self::APPLICATION_ID.'_USERNAME'];
-        $password = $_SERVER['HTTP_X_'.self::APPLICATION_ID.'_PASSWORD'];
-        // Find the user
-        $user=User::model()->find('LOWER(username)=?',array(strtolower($username)));
-        if($user===null) {
-            // Error: Unauthorized
-            $this->_sendResponse(401, 'Error: User Name is invalid');
-        } else if(!$user->validatePassword($password)) {
-            // Error: Unauthorized
-            $this->_sendResponse(401, 'Error: User Password is invalid');
-        }
-    } // }}} 
+
     // {{{ _getObjectEncoded
     /**
      * Returns the json or xml encoded array

@@ -75,8 +75,7 @@ return array(
 			'urlFormat'=>'path',
 			'rules'=>array(
                         // REST patterns
-                        array('api/listTest', 'pattern'=>'api/tests', 'verb'=>'GET'),
-                        array('api/listDisease', 'pattern'=>'api/diseases', 'verb'=>'GET'),
+                        array('api/listDisease', 'pattern'=>'api/', 'verb'=>'GET'),
                         '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),  

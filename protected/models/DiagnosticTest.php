@@ -82,10 +82,16 @@ class DiagnosticTest extends CActiveRecord
 		$res = array(array());
 
 		for ($i=0; $i < count($model); $i++) { 
-			$res[$i]['id'] = ($model[$i]->id);
-			$res[$i]['name'] = ($model[$i]->disease_name);
-			$res[$i]['pretest_low'] = ($model[$i]->hints_lower);
-			$res[$i]['pretest_high'] = ($model[$i]->hints_upper);			
+			$did = ($model[$i]->id);
+			$res[$i]['disease_name'] = ($model[$i]->disease_name);
+			$tests = DiagnosticTest::model()->findAllByAttributes(array('disease_id'=>$did));
+
+			for ($k=0; $k < count($tests); $k++) { 
+				$res[$i][$k]['name'] = ($tests[$k]->name);
+				$res[$i][$k]['specificity'] = 20;
+				$res[$i][$k]['sensitivity'] = 40;
+				$res[$i][$k]['cost'] = ($tests[$k]->cost);				
+			}
 		}
 
 		return $res;
@@ -96,16 +102,6 @@ class DiagnosticTest extends CActiveRecord
 	 */
 	public function getAllDiagTest(){
 
-		$model = DiagnosticTest::model()->findAll();
-		$res = array(array());
-
-		for ($i=0; $i < count($model); $i++) { 
-			$res[$i]['id'] = ($model[$i]->id);
-			$res[$i]['disease_id'] = ($model[$i]->disease_id);
-			$res[$i]['cost'] = ($model[$i]->cost);
-			$res[$i]['name'] = ($model[$i]->name);
-		}
-		return $res;
 	}
 
 	/**

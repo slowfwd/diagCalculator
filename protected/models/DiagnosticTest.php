@@ -85,7 +85,7 @@ class DiagnosticTest extends CActiveRecord
 			$did = ($model[$i]->id);
 			$res[$i]['disease_name'] = ($model[$i]->disease_name);
 			$tests = DiagnosticTest::model()->findAllByAttributes(array('disease_id'=>$did));
-
+			$res[$i]['hint'] = 'Default Hint';
 			for ($k=0; $k < count($tests); $k++) { 
 				$res[$i][$k]['name'] = ($tests[$k]->name);
 				$res[$i][$k]['specificity'] = 20;

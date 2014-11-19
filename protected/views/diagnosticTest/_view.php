@@ -20,5 +20,11 @@
 	<b><?php echo CHtml::encode($data->getAttributeLabel('cost')); ?>:</b>
 	<?php echo CHtml::encode($data->cost); ?>
 	<br />
+	<b><?php echo CHtml::encode($data->getAttributeLabel('sensitivity')); ?>:</b>
+	<?php echo CHtml::encode($data->sensitivity); ?>
+	<br />
+	<b><?php echo CHtml::encode($data->getAttributeLabel('specificity')); ?>:</b>
+	<?php echo CHtml::encode($data->specificity); ?>
+	<br />
 
 </div>

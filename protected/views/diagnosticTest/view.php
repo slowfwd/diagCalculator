@@ -25,5 +25,7 @@ $this->menu=array(
 		array('name'=>'disease.disease_name'),
 		'name',
 		'cost',
+		'sensitivity',
+		'specificity',
 	),
 )); ?>

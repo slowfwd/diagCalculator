@@ -30,6 +30,14 @@
 		<?php echo $form->label($model,'cost'); ?>
 		<?php echo $form->textField($model,'cost'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->label($model,'sensitivity'); ?>
+		<?php echo $form->textField($model,'sensitivity'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->label($model,'specificity'); ?>
+		<?php echo $form->textField($model,'specificity'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

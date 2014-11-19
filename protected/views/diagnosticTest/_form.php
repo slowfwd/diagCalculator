@@ -36,6 +36,16 @@
 		<?php echo $form->dropDownList($model,'cost',array('1','2','3','4','5')); ?>
 		<?php echo $form->error($model,'cost'); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'sensitivity'); ?>
+		<?php echo $form->dropDownList($model,'sensitivity',array('1','2','3','4','5')); ?>
+		<?php echo $form->error($model,'sensitivity'); ?>
+	</div>
+	<div class="row">
+		<?php echo $form->labelEx($model,'specificity'); ?>
+		<?php echo $form->dropDownList($model,'specificity',array('1','2','3','4','5')); ?>
+		<?php echo $form->error($model,'specificity'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -31,12 +31,14 @@ class DiagnosticTest extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('disease_id, name', 'required'),
-			array('disease_id, cost', 'numerical', 'integerOnly'=>true),
+			array('disease_id, name, cost, sensitivity, specificity', 'required'),
+			array('disease_id, cost, sensitivity, specificity', 'numerical', 'integerOnly'=>true),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, disease_id, name, cost', 'safe', 'on'=>'search'),
+			array('id, disease_id, name, cost, sensitivity, specificity', 'safe', 'on'=>'search'),
+			array('cost', 'length', 'max'=>1),
+
 		);
 	}
 
@@ -62,6 +64,8 @@ class DiagnosticTest extends CActiveRecord
 			'disease_id' => 'Disease',
 			'name' => 'Name',
 			'cost' => 'Cost',
+			'sensitivity' => 'Sensitivity',
+			'specificity' => 'Specificity'
 		);
 	}
 
@@ -126,6 +130,8 @@ class DiagnosticTest extends CActiveRecord
 		$criteria->compare('disease_id',$this->disease_id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('cost',$this->cost);
+		$criteria->compare('sensitivity',$this->sensitivity);
+		$criteria->compare('specificity',$this->specificity);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

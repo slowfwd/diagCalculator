@@ -32,7 +32,8 @@ class DiagnosticTest extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('disease_id, name, cost, sensitivity, specificity', 'required'),
-			array('disease_id, cost, sensitivity, specificity', 'numerical', 'integerOnly'=>true),
+			array('disease_id, cost', 'numerical', 'integerOnly'=>true),
+			array('sensitivity,specificity','numerical','min'=>0,'max'=>100),
 			array('name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

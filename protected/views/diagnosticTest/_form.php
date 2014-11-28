@@ -38,12 +38,12 @@
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'sensitivity'); ?>
-		<?php echo $form->dropDownList($model,'sensitivity',array('1','2','3','4','5')); ?>
+		<?php echo $form->textField($model,'sensitivity',array('size'=>20,'maxlength'=>6)); ?>
 		<?php echo $form->error($model,'sensitivity'); ?>
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'specificity'); ?>
-		<?php echo $form->dropDownList($model,'specificity',array('1','2','3','4','5')); ?>
+		<?php echo $form->textField($model,'specificity',array('size'=>20,'maxlength'=>6)); ?>
 		<?php echo $form->error($model,'specificity'); ?>
 	</div>
 

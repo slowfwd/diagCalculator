@@ -75,8 +75,6 @@ class DiagnosticTestController extends Controller
 		if(isset($_POST['DiagnosticTest']))
 		{
 			$values = $_POST['DiagnosticTest'];
-			$values['sensitivity'] = (string)( 1 + intval($values['sensitivity']));
-			$values['specificity'] = (string)( 1 + intval($values['specificity']));
 			$values['cost'] = (string)( 1 + intval($values['cost']));
 
 			$model->attributes=$values;

@@ -71,9 +71,16 @@ class DiagnosticTestController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
+
 		if(isset($_POST['DiagnosticTest']))
 		{
-			$model->attributes=$_POST['DiagnosticTest'];
+			$values = $_POST['DiagnosticTest'];
+			$values['sensitivity'] = (string)( 1 + intval($values['sensitivity']));
+			$values['specificity'] = (string)( 1 + intval($values['specificity']));
+			$values['cost'] = (string)( 1 + intval($values['cost']));
+
+			$model->attributes=$values;
+			var_dump($_POST['DiagnosticTest']);
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}

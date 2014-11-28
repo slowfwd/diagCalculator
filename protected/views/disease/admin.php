@@ -49,8 +49,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 	'columns'=>array(
 		'id',
 		'disease_name',
-		'hints_lower',
-		'hints_upper',		
+		'hint',
 		array(
 			'class'=>'CButtonColumn',
 		),

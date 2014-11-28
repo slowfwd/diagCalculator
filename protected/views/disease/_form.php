@@ -25,14 +25,9 @@
 		<?php echo $form->error($model,'disease_name'); ?>
 	</div>
 	<div class="row">
-		<?php echo $form->labelEx($model,'Pretest Probability Lower Bound'); ?>
-		<?php echo $form->textField($model,'hints_lower'); ?>
-		<?php echo $form->error($model,'hints_lower'); ?>
-	</div>
-	<div class="row">
-		<?php echo $form->labelEx($model,'Pretest Probability Higher Bound'); ?>
-		<?php echo $form->textField($model,'hints_upper'); ?>
-		<?php echo $form->error($model,'hints_upper'); ?>
+		<?php echo $form->labelEx($model,'Hint'); ?>
+		<?php echo $form->textField($model,'hint'); ?>
+		<?php echo $form->error($model,'hint'); ?>
 	</div>
 
 	<div class="row buttons">

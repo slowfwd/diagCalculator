@@ -20,14 +20,10 @@
 		<?php echo $form->label($model,'disease_name'); ?>
 		<?php echo $form->textField($model,'disease_name',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
-	<div class="row">
-		<?php echo $form->label($model,'hints_lower'); ?>
-		<?php echo $form->textField($model,'hints_lower'); ?>
-	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'hints_upper'); ?>
-		<?php echo $form->textField($model,'hints_upper'); ?>				
+		<?php echo $form->label($model,'hint'); ?>
+		<?php echo $form->textField($model,'hint'); ?>				
 	</div>
 
 

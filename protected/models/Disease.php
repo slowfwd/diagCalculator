@@ -30,12 +30,11 @@ class Disease extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('disease_name, hints_lower, hints_upper', 'required'),
-			array('hints_lower, hints_upper', 'numerical', 'integerOnly'=>true),
+			array('disease_name, hint', 'required'),
 			array('disease_name', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, disease_name, hints_lower, hints_upper', 'safe', 'on'=>'search'),
+			array('id, disease_name, hint', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +58,8 @@ class Disease extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'disease_name' => 'Disease Name',
-			'hints_lower' => 'Hints Lower',
-			'hints_upper' => 'Hints Upper',
+			'hint' => 'Hint',
+
 		);
 	}
 
@@ -84,8 +83,7 @@ class Disease extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('disease_name',$this->disease_name,true);
-		$criteria->compare('hints_lower',$this->hints_lower);
-		$criteria->compare('hints_upper',$this->hints_upper);
+		$criteria->compare('hint',$this->hint);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
